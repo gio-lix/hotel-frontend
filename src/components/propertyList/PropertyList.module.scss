@@ -1,0 +1,52 @@
+@import "src/styles/breakpoints";
+@import "src/styles/mixin";
+
+.root {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+
+
+  .titleBox {
+      > h1 {
+        font-size: 25px;
+        font-weight: 700;
+        color: #363636;
+        margin: 7px 0;
+      }
+  }
+
+
+
+  .propertyBox {
+    aspect-ratio: 10 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover {
+      .img {
+        transform: scale(1.1);
+      }
+    }
+
+
+    .img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      transform: scale(1);
+
+      @include transition(transform);
+
+    }
+  }
+
+  @include breakpoint-down(medium) {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 40px;
+  }
+  @include breakpoint-down(small) {
+    grid-template-columns: 1fr;
+    margin: 0 20px;
+  }
+}

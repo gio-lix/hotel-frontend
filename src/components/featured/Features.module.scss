@@ -1,0 +1,79 @@
+@import "src/styles/mixin";
+@import "src/styles/breakpoints";
+
+.feature {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  border-radius: 10px;
+  padding-top: 40px;
+
+
+
+  > div {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+
+
+    @include breakpoint-up(large) {
+      &:hover {
+        .titleBox {
+          bottom: 30px;
+          line-height: 70px;
+        }
+
+        &::before {
+          background-color: black;
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      @include transition(opacity);
+    }
+
+    > img {
+      width: 100%;
+    }
+
+    .titleBox {
+      position: absolute;
+      bottom: -32px;
+
+      left: 15px;
+      color: white;
+      font-size: 40px;
+      font-weight: 500;
+      @include breakpoint-down(medium) {
+        bottom: 40px;
+        font-size: 35px;
+        line-height: 50px;
+      }
+
+      @include breakpoint-up(medium) {
+        @include transition(bottom);
+      }
+
+
+
+    }
+  }
+
+
+  @include breakpoint-down(medium) {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 40px;
+  }
+  @include breakpoint-down(small) {
+     grid-template-columns: repeat(1, 1fr);
+     margin: 0 20px;
+   }
+}

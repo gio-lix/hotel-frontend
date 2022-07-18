@@ -1,0 +1,209 @@
+@import "../../../styles/variables";
+@import "../../../styles/breakpoints";
+@import "../../../styles/mixin";
+
+
+.root {
+  position: relative;
+  height: 450px;
+  width: 100%;
+  background-color: #074e98;
+  color: white;
+
+  .head {
+    padding-top: 15px;
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: space-between;
+
+    > p:nth-child(1) {
+      font-size: 30px;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    > nav {
+      > ul {
+        display: flex;
+        align-items: center;
+
+
+        > p {
+          font-size: 20px;
+          margin-right: 20px;
+        }
+        > li {
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+
+          > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 10px 30px;
+            color: black;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  .title {
+    font-size: 45px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+
+  .icons {
+    margin-bottom: 60px;
+
+    > span {
+      display: inline-block;
+      background-color: red;
+
+      > * {
+        height: 40px;
+        width: 50px;
+        color: white;
+      }
+    }
+  }
+}
+
+.box {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  height: 120px;
+  width: 100%;
+  background-color: #074e98;
+  color: black;
+
+  > div {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -30px;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+    border: 3px solid #ffa600;
+  }
+}
+
+
+.headerSearchBox {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-left: 5px;
+  padding: 0 10px;
+  color: #a6a5a5;
+
+
+  > button {
+    width: 80px;
+    height: 100%;
+    margin-left: 10px;
+    background-color: #1f90ff;
+    color: white;
+  }
+  > input {
+    box-sizing: border-box;
+    border: none;
+    height: 100%;
+    flex-grow: 1;
+    font-size: 20px;
+  }
+
+  .Icon {
+    margin-right: 19px;
+  }
+
+  .searchDate {
+    position: relative;
+    flex-grow: 1;
+  }
+
+  .searchBox {
+    position: absolute;
+    left: 35%;
+    top: 50px;
+  }
+  .optionCountBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    flex-grow: 1;
+
+    > div {
+      display: flex;
+      button {
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+.visible {
+  position: fixed;
+  height: 120px;
+  top: 0;
+}
+
+.fix {
+  width: 100%;
+  @extend .move;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  z-index: 12;
+}
+
+.logo {
+  padding-top: 15px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  //margin-bottom: 50px;
+}
+
+
+@keyframes fade-in {
+  from {
+    top: -20px;
+  }
+  to {
+    top: 5px;
+  }
+}
+
+.move {
+  animation: fade-in 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-out {
+  from {
+    top: 25px;
+  }
+  to {
+    top: -50px;
+  }
+}
+
+.moveOut {
+  animation: fade-out 300ms;
+  animation-fill-mode: forwards;
+}
+
+.homePath {
+  height: 180px !important;
+}

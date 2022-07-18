@@ -1,0 +1,40 @@
+.IconBox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid white;
+  width: 140px;
+  height: 50px;
+  padding: 2px 17px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 30px;
+
+
+  > span {
+    display: inline-block;
+
+    > * {
+      height: 40px;
+      width: 50px;
+      color: white;
+    }
+  }
+
+  > p {
+    color: white;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
+.active {
+    background-color: white;
+    > span * {
+        color: black !important;
+    }
+
+    > p {
+        color: black;
+    }
+}

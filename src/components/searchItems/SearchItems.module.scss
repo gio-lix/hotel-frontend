@@ -1,0 +1,118 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+.root {
+  display: flex;
+  width: 100%;
+  min-height: 230px;
+  border: 1px solid $grayishMiddleBlue;
+  padding: 10px;
+
+  margin-top: 10px;
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+}
+.imageBox {
+  min-height: 100%;
+  width: 200px;
+  background-color: #ffa600;
+  > img {
+    height: 100%;
+    width: 100%;
+
+  }
+}
+
+.info {
+  display: flex;
+  min-height: 100%;
+  flex-grow: 1;
+  margin-left: 20px;
+
+  &_box {
+    width: 64%;
+
+    > h5:last-child {
+      font-weight: 500;
+      color: $limeGreenMedium;
+    }
+  }
+
+  &_name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #074e98;
+    margin-bottom: 10px;
+  }
+  &_address {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  &_button {
+    font-size: $font-sm;
+    padding: 3px 10px;
+    color: white;
+    background-color: $limeGreenMedium;
+    opacity: 0.7;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &_additional_info {
+    color: black;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  &_desc {
+    margin-bottom: 10px;
+  }
+  &_cancel {
+    color: $GreenMedDark;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+
+
+  &_price_box {
+    width: 36%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    > p {
+      font-size: $font-mdlg;
+      color: $grayishDarkBlue;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    > h5 {
+      font-size: $font-sm;
+      color: $grayishMiddleBlue;
+      margin-bottom: 15px;
+    }
+
+    > button {
+      padding: 6px 10px;
+      font-size: $font-med;
+      color: white;
+      font-weight: 400;
+      background-color: #074e98;
+      border: none;
+      cursor: pointer;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
