@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import s from "./Hotels.module.scss"
 import clsx from "clsx";
 import useFetch from "../../hooks/useFetch";
@@ -10,20 +10,14 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import {FaCalendarAlt} from "react-icons/fa";
 import {format} from "date-fns";
+import {useSearchParams, createSearchParams} from "react-router-dom";
 
-interface SearchProps {
-    direction: string
-    date: DatesProps[]
-    min: string
-    max: string
-    adult: number
-    children: number
-    room: number
-}
+
 
 const Hotels = () => {
     const {options, dates: ctxDate, destination} = useContext(SearchContext)
     const [openDate, setOpenDate] = useState<boolean>(false);
+    let [searchParams, setSearchParams] = useSearchParams();
 
 
     const [dates, setDates] = useState<DatesProps[]>([{
@@ -32,27 +26,36 @@ const Hotels = () => {
         key: "selection",
     },
     ]);
-    const [values, setValues] = useState({
-        direction: destination,
-        date: dates,
-        min: "",
-        max: "",
-        adult: options.adult,
-        children: options.children,
-        room: options.room
-    } as SearchProps)
+
+
+    const [query, setQuery] = useState<any>({
+        city: "" ,
+        // date: dates || searchParams.get("date"),
+        min: "" || searchParams.get("min"),
+        max: "" || searchParams.get("max") ,
+        // adult: 0 || searchParams.get("adult") ,
+        // children: 0 || searchParams.get("children"),
+        // room: 0 || searchParams.get("room"),
+    })
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {value, name} = e?.target
+        setQuery({...query, [name]: value})
+    }
+
+    useEffect(() => {
+        let obj: any = { city:  searchParams.get("city")}
+        Object.entries(query).forEach(el => {
+             if (el[1]) Object.assign(obj, {[el[0]]: el[1]});
+        })
+        setSearchParams(obj)
+    },[query])
 
     const {
         data,
         loading,
         reFetch
-    } = useFetch(`/hotels?city=${values.direction}&min=${values.min || 0}&max=${values.max || 999}`);
+    } = useFetch(`/hotels?city=${query.city || searchParams.get("city")}&min=${query.min || 0}&max=${query.max || 999}`);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-        const {value, name} = e?.target
-        setValues({...values, [name]: value})
-    }
 
 
     const handleClick = () => {
@@ -67,15 +70,15 @@ const Hotels = () => {
                 <div className={s.flexCol}>
                     <label
                         className={s.title}
-                        htmlFor="direction"
+                        htmlFor="city"
                     >
                         Direction
                     </label>
                     <input
-                        id="direction"
+                        id="city"
                         type="text"
-                        name="direction"
-                        value={values['direction'] || ""}
+                        name="city"
+                        value={query['city'] || ""}
                         onChange={handleChange}
                     />
                 </div>
@@ -118,7 +121,7 @@ const Hotels = () => {
                         type="number"
                         name="min"
                         min={1}
-                        value={values['min']}
+                        value={query['min'] || ""}
                         onChange={handleChange}
                     />
                 </div>
@@ -129,7 +132,7 @@ const Hotels = () => {
                         type="number"
                         name="max"
                         min={50}
-                        value={values['max']}
+                        value={query['max'] || ""}
                         onChange={handleChange}
                     />
                 </div>
@@ -140,7 +143,7 @@ const Hotels = () => {
                         type="number"
                         name="adult"
                         min={1}
-                        value={values['adult'] || 1}
+                        value={query['adult'] || 1}
                         onChange={handleChange}
                     />
                 </div>
@@ -151,7 +154,7 @@ const Hotels = () => {
                         type="number"
                         name="children"
                         min={0}
-                        value={values['children'] || 0}
+                        value={query['children'] || 0}
                         onChange={handleChange}
                     />
                 </div>
@@ -162,7 +165,7 @@ const Hotels = () => {
                         type="number"
                         name="room"
                         min={1}
-                        value={values['room'] || 1}
+                        value={query['room'] || 1}
                         onChange={handleChange}
                     />
                 </div>
