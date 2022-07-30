@@ -1,9 +1,30 @@
 import useFetch from "../../hooks/useFetch";
 import s from "./Features.module.scss"
 import clsx from "clsx";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import {useEffect} from "react";
+const category = [
+    {id: 1, name: "Berlin", image: "https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="},
+    {id: 2, name: "Madrid", image: "https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="},
+    {id: 3, name: "London", image: "https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="}
+]
 
 const Featured = () => {
+    let navigate = useNavigate();
+    let [searchParams, setSearchParams] = useSearchParams();
     const {data, loading} = useFetch("/hotels/countByCity?cities=berlin,madrid,london");
+    const page = searchParams.get("city")
+
+    useEffect(() => {
+        if (page) {
+            navigate("/hotels?city=" + searchParams.get("city"));
+        }
+    },[page])
+
+    const onHandleClick = (item: string) => {
+        setSearchParams({"city": item.toLowerCase()})
+    }
+
 
     return (
         <>
@@ -11,36 +32,18 @@ const Featured = () => {
                 <p>Loading</p>
             ) : (
                 <section className={clsx(s.feature)}>
-                    <div>
-                        <img
-                            src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
-                            alt="img"
-                        />
-                        <div className={s.titleBox}>
-                            <h1>Berlin</h1>
-                            <h2>{data[0]} properties</h2>
+                    {category.map((item, index) => (
+                        <div key={item.name} onClick={() => onHandleClick(item.name)}>
+                            <img
+                                src={item.image}
+                                alt={item.name}
+                            />
+                            <div  className={s.titleBox}>
+                                <h1>{item.name}</h1>
+                                <h2>{data[index]} properties</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <img
-                            src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
-                            alt="img"
-                        />
-                        <div className={s.titleBox}>
-                            <h1>Madrid</h1>
-                            <h2>{data[1]} properties</h2>
-                        </div>
-                    </div>
-                    <div>
-                        <img
-                            src="https://cf.bstatic.com/xdata/images/city/max500/689422.webp?k=2595c93e7e067b9ba95f90713f80ba6e5fa88a66e6e55600bd27a5128808fdf2&o="
-                            alt="img"
-                        />
-                        <div className={s.titleBox}>
-                            <h1>London</h1>
-                            <h2>{data[2]} properties</h2>
-                        </div>
-                    </div>
+                    ))}
                 </section>
             )}
         </>

@@ -1,5 +1,6 @@
 @import "src/styles/variables";
 @import "src/styles/mixin";
+@import "src/styles/breakpoints";
 
 .root {
   display: flex;
@@ -19,6 +20,8 @@
   padding: 10px 20px;
   background-color: #ffa600;
   border-radius: 10px;
+
+
 
   @include transition(top);
 

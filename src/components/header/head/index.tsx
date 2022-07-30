@@ -13,18 +13,15 @@ import {format} from "date-fns";
 import {DateRange} from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import {SearchContext} from "../../../context/SearchConext";
 import {DatesProps, OptionProps} from "../../../type";
 import {AuthContext} from "../../../context/AuthContext";
-
-
-
-
 
 
 const Header = () => {
     const navigate = useNavigate();
     const location = useLocation()
+
+    const {user} = useContext(AuthContext)
 
     const path = location.pathname === "/"
 
@@ -46,8 +43,8 @@ const Header = () => {
             key: "selection",
         },
     ]);
-    const {dispatch} = useContext(SearchContext)
-    const {user} = useContext(AuthContext)
+
+
 
     const handleOption = (name: string, operation: string) => {
         setOptions((prev: OptionProps) => {
@@ -69,8 +66,7 @@ const Header = () => {
     }, [])
 
     const handleSearch = () => {
-        dispatch({type: "NEW_SEARCH", payload: {options,dates,destination}})
-        navigate("/hotels");
+        navigate(`/hotels?city=${destination}`);
     };
 
     return (
@@ -127,6 +123,7 @@ const Header = () => {
                             <input
                                 type="text"
                                 placeholder="Where are you going?"
+                                value={destination}
                                 onChange={(e) => setDestination(e.target.value)}
                             />
 
