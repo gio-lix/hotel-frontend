@@ -7,7 +7,9 @@
 
   > div:last-child {
     flex-grow: 10;
-    min-height: 1500px;
+    min-height: 700px;
+    //min-height: 1500px;
+
   }
 }
 
@@ -22,9 +24,7 @@
   border-radius: 10px;
 
 
-
   @include transition(top);
-
 
   > div {
     display: flex;
@@ -100,6 +100,10 @@
       font-weight: 500;
       border: none;
     }
+  }
+
+  @include breakpoint-down(medium) {
+    display: none;
   }
 }
 

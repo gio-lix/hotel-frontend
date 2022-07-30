@@ -1,5 +1,6 @@
 @import "src/styles/variables";
 @import "src/styles/mixin";
+@import "src/styles/breakpoints";
 
 .root {
   display: flex;
@@ -8,15 +9,26 @@
   border: 1px solid $grayishMiddleBlue;
   padding: 10px;
 
+  @include breakpoint-down(medium) {
+    flex-direction: column !important;
+  }
   margin-top: 10px;
+
   &:not(:first-child) {
     margin-top: 30px;
   }
 }
+
 .imageBox {
   min-height: 100%;
   width: 200px;
   background-color: #ffa600;
+
+  @include breakpoint-down(medium) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   > img {
     height: 100%;
     width: 100%;
@@ -29,6 +41,9 @@
   min-height: 100%;
   flex-grow: 1;
   margin-left: 20px;
+  @include breakpoint-down(medium) {
+    margin-top: 10px;
+  }
 
   &_box {
     width: 64%;
@@ -46,6 +61,7 @@
     color: #074e98;
     margin-bottom: 10px;
   }
+
   &_address {
     font-size: 16px;
     margin-bottom: 10px;
@@ -65,20 +81,22 @@
       opacity: 1;
     }
   }
+
   &_additional_info {
     color: black;
     font-weight: 600;
     margin-bottom: 20px;
   }
+
   &_desc {
     margin-bottom: 10px;
   }
+
   &_cancel {
     color: $GreenMedDark;
     font-weight: 700;
     margin-bottom: 10px;
   }
-
 
 
   &_price_box {

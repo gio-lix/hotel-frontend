@@ -8,6 +8,7 @@ import {AiFillCar} from "react-icons/ai"
 import {MdAttractions} from "react-icons/md"
 import {RiTaxiWifiFill} from "react-icons/ri"
 import {FaCalendarAlt} from "react-icons/fa"
+import {GiHamburgerMenu} from "react-icons/gi"
 import PropertyNav from "../propertyNav";
 import {format} from "date-fns";
 import {DateRange} from "react-date-range";
@@ -28,6 +29,7 @@ const Header = () => {
     const [isFixed, setIsFixed] = useState<boolean>(false);
     const categoriesRef = useRef<HTMLDivElement | null>(null);
     const [openDate, setOpenDate] = useState<boolean>(false);
+    const [openBurger, setOpenBurger] = useState<boolean>(false)
     const [destination, setDestination] = useState<string>("")
 
 
@@ -71,7 +73,11 @@ const Header = () => {
 
     return (
         <header ref={categoriesRef} className={clsx(s.root, !path && s.homePath)}>
+
             <div className={clsx("container", s.head, path && (isFixed && s.fix))}>
+                <div className={s.burger}>
+                    <GiHamburgerMenu />
+                </div>
                 <p onClick={() => navigate("/")}>LOGO</p>
                 <nav>
                     <ul>
@@ -90,7 +96,7 @@ const Header = () => {
                                 </>
                         ) : (
                             <>
-                                <p>{user.email}</p>
+                                <p className={s.user}>{user.email}</p>
                                 <li>
                                     <Link to={"/"}>
                                         logout
@@ -114,7 +120,7 @@ const Header = () => {
                     <p className={clsx('container', s.title)}>
                         A lifetime of discount? it's Genius
                     </p>
-                    <p className={clsx('container')}>
+                    <p className={clsx('container', s.descTitle)}>
                         Get rewarded for your travel-unlock instant saving of 10% or more with a free booking account
                     </p>
                     <div className={clsx(s.box, isFixed && s.visible)}>

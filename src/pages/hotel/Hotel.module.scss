@@ -61,7 +61,20 @@
 
 }
 
+.box {
+  @include breakpoint-down(medium) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
 .grid {
+  @include breakpoint-down(medium) {
+    order: 2;
+  }
+
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
   grid-gap: 10px;
@@ -82,6 +95,13 @@
 
 
 .dateLengthBox {
+
+  @include breakpoint-down(medium) {
+    order: 1;
+    width: 100%;
+    margin: 10px auto;
+  }
+
   width: 300px;
   height: 100%;
   margin-left: 10px;
@@ -93,15 +113,24 @@
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 25px;
+    @include breakpoint-down(medium) {
+      text-align: center;
+    }
   }
   > h5 {
     margin-bottom: 25px;
+    @include breakpoint-down(medium) {
+      text-align: center;
+    }
   }
 
   > div:nth-child(3) {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    @include breakpoint-down(medium) {
+      justify-content: center;
+    }
     > p {
       font-size: 25px;
       font-weight: 700;
@@ -117,7 +146,12 @@
     color: white;
     font-size: 18px;
     border: none;
-    margin: 0 auto;
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      padding: 10px 0;
+      margin: 10px 0;
+    }
   }
 
 }

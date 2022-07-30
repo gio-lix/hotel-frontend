@@ -52,7 +52,7 @@ const Hotel = () => {
                 <h4>Book a stay over $144 at this property and get a free airport taxi</h4>
                 <button>Reserve or Book Now!</button>
             </article>
-            <div className='flex'>
+            <div className={clsx('flex', s.box)}>
                 <div className={s.grid} style={{flexGrow: 1}}>
                     <div>
                         <img

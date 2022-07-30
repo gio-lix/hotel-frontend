@@ -9,17 +9,26 @@
   width: 100%;
   background-color: #074e98;
   color: white;
+  padding: 0 30px;
 
+  @include breakpoint-down(medium) {
+    //min-height: 250px!important;
+    height: 100%;
+    padding: 10px;
+
+  }
   .head {
     padding-top: 15px;
     display: flex;
     margin-bottom: 50px;
     justify-content: space-between;
 
-    > p:nth-child(1) {
+
+    > p:nth-child(2) {
       font-size: 30px;
       font-weight: 500;
       letter-spacing: 2px;
+
     }
 
     > nav {
@@ -31,6 +40,9 @@
         > p {
           font-size: 20px;
           margin-right: 20px;
+          @include breakpoint-down(medium) {
+            display: none;
+          }
         }
         > li {
           &:not(:last-child) {
@@ -49,6 +61,11 @@
         }
       }
     }
+    @include breakpoint-down(medium) {
+      margin: 0;
+      padding: 10px;
+      background-color: #074e98;
+    }
   }
 
   .title {
@@ -56,10 +73,26 @@
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 30px;
+    @include breakpoint-down(medium) {
+      font-size: 30px!important;
+      text-align: center!important;
+
+    }
   }
+  .descTitle {
+    @include breakpoint-down(medium) {
+      //font-size: 30px!important;
+      text-align: center!important;
+
+    }
+  }
+
 
   .icons {
     margin-bottom: 60px;
+    @include breakpoint-down(medium) {
+      display: none;
+    }
 
     > span {
       display: inline-block;
@@ -76,11 +109,17 @@
 .box {
   position: absolute;
   bottom: 0;
+  left: 0;
   z-index: 10;
   height: 120px;
   width: 100%;
   background-color: #074e98;
   color: black;
+
+  @include breakpoint-down(medium) {
+    display: none;
+    height: 0;
+  }
 
   > div {
     position: absolute;
@@ -144,9 +183,18 @@
 
     > div {
       display: flex;
+      align-items: center;
       button {
         cursor: pointer;
       }
+
+    }
+
+    * > button {
+      height: 30px;
+      width: 30px;
+      font-size: 17px;
+      margin: 0 5px;
     }
 
   }
@@ -180,7 +228,7 @@
     top: -20px;
   }
   to {
-    top: 5px;
+    top: 0;
   }
 }
 
@@ -205,4 +253,17 @@
 
 .homePath {
   height: 180px !important;
+  @include breakpoint-down(medium) {
+    height: 80px !important;
+  }
+}
+
+
+.burger {
+  display: none;
+  @include breakpoint-down(medium) {
+    display: inline-block;
+    font-size: 40px;
+    cursor: pointer;
+  }
 }
