@@ -266,4 +266,34 @@
     font-size: 40px;
     cursor: pointer;
   }
+  .openBurgerMenu {
+    position: fixed;
+    z-index: 30;
+  }
 }
+.openMenu {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: $darkBlue;
+  padding: 70px 0;
+  @include transition(left);
+  @include breakpoint-up(large) {
+    display: none;
+  }
+}
+.closeMenu {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: -110%;
+  @include transition(left);
+  width: 100%;
+  min-height: 100vh;
+  background-color: $darkBlue;
+}
+
+

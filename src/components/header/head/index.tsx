@@ -16,6 +16,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import {DatesProps, OptionProps} from "../../../type";
 import {AuthContext} from "../../../context/AuthContext";
+import ResponsiveSearch from "../../responsiveSearch";
 
 
 const Header = () => {
@@ -40,12 +41,11 @@ const Header = () => {
     });
 
     const [dates, setDates] = useState<DatesProps[]>([{
-            startDate: new Date(),
-            endDate: new Date(),
-            key: "selection",
-        },
+        startDate: new Date(),
+        endDate: new Date(),
+        key: "selection",
+    },
     ]);
-
 
 
     const handleOption = (name: string, operation: string) => {
@@ -66,34 +66,70 @@ const Header = () => {
             }
         })
     }, [])
+    const lockScroll = () => {
+        document.body.style.overflow = 'hidden'
+    }
+
+    const unlockScroll = () => {
+        document.body.style.overflow = ''
+    }
+    const onHandleClickScroll = () => {
+        if (openBurger) {
+            lockScroll()
+            window.scrollTo(0, 0);
+        } else {
+            unlockScroll()
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('click', onHandleClickScroll)
+        return () => window.removeEventListener("click", onHandleClickScroll)
+    }, [openBurger])
 
     const handleSearch = () => {
+        setOpenBurger(false)
+        setDestination("")
         navigate(`/hotels?city=${destination}`);
     };
 
     return (
         <header ref={categoriesRef} className={clsx(s.root, !path && s.homePath)}>
-
-            <div className={clsx("container", s.head, path && (isFixed && s.fix))}>
+            <section className={clsx(openBurger ? s.openMenu : s.closeMenu)}>
+                <ResponsiveSearch
+                    options={options}
+                    handleOption={handleOption}
+                    openBurger={openBurger}
+                    setDates={setDates}
+                    dates={dates}
+                    setOpenDate={setOpenDate}
+                    openDate={openDate}
+                    handleSearch={handleSearch}
+                    destination={destination}
+                    setDestination={setDestination}
+                />
+            </section>
+            <section className={clsx("container", s.head, path && (isFixed && s.fix))}>
                 <div className={s.burger}>
-                    <GiHamburgerMenu />
+                    <div className={clsx(openBurger && s.openBurgerMenu)} onClick={() => setOpenBurger(!openBurger)}>
+                        <GiHamburgerMenu/>
+                    </div>
                 </div>
                 <p onClick={() => navigate("/")}>LOGO</p>
                 <nav>
                     <ul>
                         {!user ? (
-                                <>
-                                    <li>
-                                        <Link to={"/login"}>
-                                            login
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={"/register"}>
-                                            Register
-                                        </Link>
-                                    </li>
-                                </>
+                            <>
+                                <li>
+                                    <Link to={"/login"}>
+                                        login
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={"/register"}>
+                                        Register
+                                    </Link>
+                                </li>
+                            </>
                         ) : (
                             <>
                                 <p className={s.user}>{user.email}</p>
@@ -107,7 +143,7 @@ const Header = () => {
                     </ul>
 
                 </nav>
-            </div>
+            </section>
             <div className={clsx("container", s.icons, !path && s.propertyPath)}>
                 <PropertyNav active={true} Icon={FaBed} text={"text"}/>
                 <PropertyNav Icon={IoIosAirplane} text={"text"}/>
@@ -123,7 +159,7 @@ const Header = () => {
                     <p className={clsx('container', s.descTitle)}>
                         Get rewarded for your travel-unlock instant saving of 10% or more with a free booking account
                     </p>
-                    <div className={clsx(s.box, isFixed && s.visible)}>
+                    <section className={clsx(s.box, isFixed && s.visible)}>
                         <div className={clsx('container flex', s.headerSearchBox)}>
                             {/*     hotel    */}
                             <input
@@ -155,52 +191,54 @@ const Header = () => {
                                     minDate={new Date()}
                                 />
                             )}
-                           <div className={s.optionCountBox}>
-                               {/*     adult   */}
-                               <div>
-                                   <span>Adult</span>
-                                   <div>
-                                       <button disabled={options.adult <= 1} onClick={() => handleOption("adult", "d")}>
-                                           -
-                                       </button>
-                                       <span>{options.adult}</span>
-                                       <button onClick={() => handleOption("adult", "i")}>
-                                           +
-                                       </button>
-                                   </div>
-                               </div>
-                               {/*    adult    */}
-                               <div>
-                                   <span>Children</span>
-                                   <div>
-                                       <button disabled={options.children <= 0} onClick={() => handleOption("children", "d")}>
-                                           -
-                                       </button>
-                                       <span>{options.children}</span>
-                                       <button
-                                           onClick={() => handleOption("children", "i")}
-                                       >
-                                           +
-                                       </button>
-                                   </div>
-                               </div>
-                               {/*    room    */}
-                               <div>
-                                   <span>Room</span>
-                                   <div >
-                                       <button disabled={options.room <= 1} onClick={() => handleOption("room", "d")}>
-                                           -
-                                       </button>
-                                       <span >{options.room}</span>
-                                       <button onClick={() => handleOption("room", "i")}>
-                                           +
-                                       </button>
-                                   </div>
-                               </div>
-                           </div>
-                           <button onClick={handleSearch}>Search</button>
+                            <div className={s.optionCountBox}>
+                                {/*     adult   */}
+                                <div>
+                                    <span>Adult</span>
+                                    <div>
+                                        <button disabled={options.adult <= 1}
+                                                onClick={() => handleOption("adult", "d")}>
+                                            -
+                                        </button>
+                                        <span>{options.adult}</span>
+                                        <button onClick={() => handleOption("adult", "i")}>
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                {/*    adult    */}
+                                <div>
+                                    <span>Children</span>
+                                    <div>
+                                        <button disabled={options.children <= 0}
+                                                onClick={() => handleOption("children", "d")}>
+                                            -
+                                        </button>
+                                        <span>{options.children}</span>
+                                        <button
+                                            onClick={() => handleOption("children", "i")}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                {/*    room    */}
+                                <div>
+                                    <span>Room</span>
+                                    <div>
+                                        <button disabled={options.room <= 1} onClick={() => handleOption("room", "d")}>
+                                            -
+                                        </button>
+                                        <span>{options.room}</span>
+                                        <button onClick={() => handleOption("room", "i")}>
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onClick={handleSearch}>Search</button>
                         </div>
-                    </div>
+                    </section>
                 </>
             ) : null}
         </header>
