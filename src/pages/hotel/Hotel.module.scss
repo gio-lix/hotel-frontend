@@ -57,17 +57,64 @@
   }
 
 
-
-
 }
 
 .box {
+  position: relative;
+
+  .activeImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 12, 0.7);
+
+    .cansel {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 30px;
+    }
+
+    > img {
+      width: 80%;
+      aspect-ratio: 6/4;
+    }
+
+    .imageButton {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      position: absolute;
+      z-index: 20;
+      left: 0;
+
+      > button {
+        width: 10%;
+        padding: 10px 0;
+        font-size: 30px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: white;
+
+        &:hover {
+          border: 0.5px solid gray;
+        }
+      }
+    }
+  }
+
   @include breakpoint-down(medium) {
     display: flex;
     flex-direction: column;
   }
 }
-
 
 
 .grid {
@@ -81,9 +128,9 @@
 
 
   > div {
-    //border: 1px solid black;
     aspect-ratio: 4/3;
     grid-column: span;
+    cursor: pointer;
 
     > img {
       width: 100%;
@@ -91,7 +138,6 @@
     }
   }
 }
-
 
 
 .dateLengthBox {
@@ -117,6 +163,7 @@
       text-align: center;
     }
   }
+
   > h5 {
     margin-bottom: 25px;
     @include breakpoint-down(medium) {
@@ -131,17 +178,19 @@
     @include breakpoint-down(medium) {
       justify-content: center;
     }
+
     > p {
       font-size: 25px;
       font-weight: 700;
     }
+
     > span {
       margin-left: 5px;
     }
   }
 
   > button {
-    padding: 7px 15px ;
+    padding: 7px 15px;
     background-color: #074e98;
     color: white;
     font-size: 18px;
@@ -154,4 +203,8 @@
     }
   }
 
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
