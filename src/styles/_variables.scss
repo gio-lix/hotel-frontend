@@ -1,26 +1,49 @@
 // Colors
-$darkBlue: hsl(233, 26%, 34%);
-$limeGreenMedium: hsl(136, 65%, 30%);
+
+$dark-Blue-800: hsl(233, 26%, 34%);
+
+$lime-green-600: hsl(116, 100%, 20%);
+$lime-green-500: hsl(136, 65%, 30%); //$limeGreenMedium
 $limeGreen: hsl(136, 65%, 51%);
-$brightCyan: hsl(192, 70%, 51%);
-$dodgerblue: #1f90ff;
-$dodgerblueLight: hsl(212, 70%, 85%);
+$green-mix-400: #65a405;
 
+$yellow-400: #ffa600;
 
-$GreenMedDark: hsl(116, 100%, 20%);
+$gray-mix-blue-800: #323e42;
 
-
-$grayishBlue: hsl(233, 8%, 72%);
-$grayishDarkBlue: hsl(233, 8%, 20%);
-$grayishMiddleBlue: hsl(236, 7%, 57%);
-$grayishLightBlue: hsl(233, 8%, 92%);
-$lightGrayishBlue: hsl(220, 16%, 96%);
-$veryLightGray: hsl(0, 0%, 98%);
+$grayish-600: hsl(233, 8%, 20%);
+$gray-700: #313131FF;
+$grayish-450: #6e6e6e;
+$grayish-400: hsl(236, 7%, 57%); // hsl(236, 7%, 57%)
+$gray-350: #a6a5a5;
+$grayish-300: hsl(233, 8%, 72%);
+$grayish-Blue-100: hsl(220, 16%, 96%);
+$grayish-Blue-50: hsl(0, 0%, 98%);
 $white: hsl(0, 0%, 100%);
+$black: #000000FF;
+
+
+
+$blue-mix-600: #074e98;
+$blue-500: #0b6fd9;
+$blue-400: #1f90ff;
+$blue-300: #1f90ff;
+
+$cyan-400: hsl(192, 70%, 51%);
+
+$dodger-blue-100: hsl(212, 70%, 85%);
 
 // Font Sizes
-$font-sm: 0.875rem; // 14px
-$font-med: 1.125rem; // 18px
-$font-lg: 1.25rem;
-$font-mdlg:  2rem;
-$font-xlg: 3.25rem;
+$font-sm: 0.875rem;     // 14px
+$font-md-16: 1rem;      // 16px
+$font-md-18: 1.125rem;  // 18px
+$font-lg-20: 1.25rem;   // 20px
+$font-lg-26: 1.25rem;   // 26px
+$font-lg-30: 1.875rem;  // 30px
+$font-lg-32: 2rem;      // 32px
+$font-lg-35: 2.188rem;  // 35px
+$font-lg-40: 2.5rem;    // 40px
+$font-lg-45: 2.813rem;  // 45px
+$font-xl-52: 3.25rem;   // 52px
+
+

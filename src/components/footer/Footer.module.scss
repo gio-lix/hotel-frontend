@@ -5,7 +5,7 @@
   width: 100%;
   height: 200px;
   margin-top: 50px;
-  background-color: dodgerblue;
+  background-color: $blue-400;
 
   > div {
     display: flex;
@@ -14,14 +14,14 @@
     height: 100%;
 
     > h4 {
+      font-size: $font-lg-35;
       font-weight: 500;
-      font-size: 35px;
-      color: white;
+      color:$white;
     }
 
     @include breakpoint-down(small) {
       > h4 {
-        font-size: 25px;
+        font-size: $font-lg-26;
       }
     }
   }

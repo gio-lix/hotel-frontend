@@ -18,9 +18,9 @@
   padding: 20px 0;
 
   > h1 {
-    font-size: $font-mdlg;
-    font-weight: 600;
     margin-bottom: 10px;
+    font-size: $font-lg-32;
+    font-weight: 600;
   }
 
   &_location {
@@ -35,21 +35,21 @@
 
   > h4 {
     font-size: 20px;
-    color: $limeGreenMedium;
+    color: $lime-green-500;
   }
 
   > button {
     position: absolute;
     top: 30px;
     right: 0;
-    border: none;
-    font-size: $font-lg;
     padding: 5px 15px;
+    font-size: $font-lg-20;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #0b6fd9;
-    color: white;
     opacity: 0.7;
+    background-color: $blue-500;
+    color: $white;
+    border: none;
 
     &:hover {
       opacity: 1;
@@ -66,19 +66,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    z-index: 20;
-    top: 0;
     width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 20;
     background-color: rgba(0, 0, 12, 0.7);
 
     .cansel {
       position: absolute;
-      right: 10px;
       top: 5px;
-      color: white;
-      cursor: pointer;
+      right: 10px;
       font-size: 30px;
+      cursor: pointer;
+      color: $white;
     }
 
     > img {
@@ -91,17 +91,17 @@
       justify-content: space-between;
       width: 100%;
       position: absolute;
-      z-index: 20;
       left: 0;
+      z-index: 20;
 
       > button {
         width: 10%;
         padding: 10px 0;
-        font-size: 30px;
-        background: none;
-        border: none;
+        font-size: $font-lg-30;
         cursor: pointer;
-        color: white;
+        color: $white;
+        border: none;
+        background: none;
 
         &:hover {
           border: 0.5px solid gray;
@@ -152,7 +152,7 @@
   height: 100%;
   margin-left: 10px;
   padding: 5px;
-  background-color: $dodgerblueLight;
+  background-color: $grayish-Blue-100;
 
 
   > h3 {
@@ -191,15 +191,15 @@
 
   > button {
     padding: 7px 15px;
-    background-color: #074e98;
-    color: white;
     font-size: 18px;
+    background-color: $blue-mix-600;
+    color: $white;
     border: none;
 
     @include breakpoint-down(medium) {
       width: 100%;
-      padding: 10px 0;
       margin: 10px 0;
+      padding: 10px 0;
     }
   }
 

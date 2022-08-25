@@ -7,25 +7,24 @@
   position: relative;
   height: 450px;
   width: 100%;
-  background-color: #074e98;
-  color: white;
   padding: 0 30px;
+  color: $white;
+  background-color: $blue-mix-600;
 
   @include breakpoint-down(medium) {
-    //min-height: 250px!important;
     height: 100%;
     padding: 10px;
 
   }
   .head {
-    padding-top: 15px;
     display: flex;
-    margin-bottom: 50px;
     justify-content: space-between;
+    margin-bottom: 50px;
+    padding-top: 15px;
 
 
     > p:nth-child(2) {
-      font-size: 30px;
+      font-size: $font-lg-30;
       font-weight: 500;
       letter-spacing: 2px;
 
@@ -36,10 +35,9 @@
         display: flex;
         align-items: center;
 
-
         > p {
-          font-size: 20px;
           margin-right: 20px;
+          font-size: $font-lg-20;
           @include breakpoint-down(medium) {
             display: none;
           }
@@ -53,10 +51,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
             padding: 10px 30px;
-            color: black;
             font-weight: 600;
+            background-color: $white;
+            color: $black;
           }
         }
       }
@@ -64,24 +62,23 @@
     @include breakpoint-down(medium) {
       margin: 0;
       padding: 10px;
-      background-color: #074e98;
+      background-color: $blue-mix-600;
     }
   }
 
   .title {
-    font-size: 45px;
+    margin-bottom: 30px;
+    font-size: $font-lg-45;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 30px;
-    @include breakpoint-down(medium) {
-      font-size: 30px!important;
-      text-align: center!important;
 
+    @include breakpoint-down(medium) {
+      font-size: $font-lg-30!important;
+      text-align: center!important;
     }
   }
   .descTitle {
     @include breakpoint-down(medium) {
-      //font-size: 30px!important;
       text-align: center!important;
 
     }
@@ -100,20 +97,20 @@
       > * {
         height: 40px;
         width: 50px;
-        color: white;
+        color: $white;
       }
     }
   }
 }
 
 .box {
+  height: 120px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   z-index: 10;
-  height: 120px;
-  width: 100%;
-  background-color: #074e98;
+  background-color: $blue-mix-600;
   color: black;
 
   @include breakpoint-down(medium) {
@@ -123,13 +120,13 @@
 
   > div {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     bottom: -30px;
+    left: 50%;
     height: 60px;
     width: 100%;
-    background-color: white;
-    border: 3px solid #ffa600;
+    transform: translateX(-50%);
+    border: 3px solid $yellow-400;
+    background-color: $white;
   }
 }
 
@@ -141,22 +138,22 @@
   width: 100%;
   margin-left: 5px;
   padding: 0 10px;
-  color: #a6a5a5;
+  color: $gray-350;
 
 
   > button {
     width: 80px;
     height: 100%;
     margin-left: 10px;
-    background-color: #1f90ff;
-    color: white;
+    color: $white;
+    background-color:$blue-500;
   }
   > input {
     box-sizing: border-box;
-    border: none;
     height: 100%;
     flex-grow: 1;
-    font-size: 20px;
+    font-size: $font-lg-20;
+    border: none;
     outline: none;
   }
 
@@ -193,7 +190,7 @@
     * > button {
       height: 30px;
       width: 30px;
-      font-size: 17px;
+      font-size: $font-md-16;
       margin: 0 5px;
     }
 
@@ -252,7 +249,7 @@
 }
 
 .homePath {
-  height: 180px !important;
+  height: 180px;
   @include breakpoint-down(medium) {
     height: 80px !important;
   }
@@ -263,7 +260,7 @@
   display: none;
   @include breakpoint-down(medium) {
     display: inline-block;
-    font-size: 40px;
+    font-size: $font-lg-40;
     cursor: pointer;
   }
   .openBurgerMenu {
@@ -273,12 +270,12 @@
 }
 .openMenu {
   position: fixed;
-  z-index: 20;
   top: 0;
   left: 0;
+  z-index: 20;
   width: 100%;
   min-height: 100vh;
-  background-color: $darkBlue;
+  background-color: $blue-mix-600;
   padding: 70px 0;
   @include transition(left);
   @include breakpoint-up(large) {
@@ -287,13 +284,18 @@
 }
 .closeMenu {
   position: absolute;
-  z-index: 20;
-  top: 0;
   left: -110%;
+  top: 0;
+  z-index: 20;
   @include transition(left);
   width: 100%;
   min-height: 100vh;
-  background-color: $darkBlue;
+  background-color: $blue-mix-600;
 }
 
-
+.pageSignUp {
+  height: 66px!important;
+}
+.logo {
+  cursor: pointer;
+}

@@ -7,7 +7,7 @@ interface Props  {
     items: HotelType
 }
 
-const SearchItems = ({ items: {_id,name,address,cheapestPrice,city,distance,featured,photos,rooms,type,desc}   }: Props) => {
+const SearchItems = ({ items: {_id,name,address,cheapestPrice,desc}   }: Props) => {
 
     const navigate = useNavigate()
 

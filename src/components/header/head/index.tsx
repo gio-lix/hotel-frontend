@@ -18,10 +18,17 @@ import {DatesProps, OptionProps} from "../../../type";
 import {AuthContext} from "../../../context/AuthContext";
 import ResponsiveSearch from "../../responsiveSearch";
 
-
+const helps = [
+    {id: 1, text: "bed", Icon: FaBed},
+    {id: 2, text: "airport", Icon: IoIosAirplane},
+    {id: 3, text: "car", Icon: AiFillCar},
+    {id: 4, text: "fun", Icon: MdAttractions},
+    {id: 5, text: "tax", Icon: RiTaxiWifiFill},
+]
 const Header = () => {
     const navigate = useNavigate();
     const location = useLocation()
+    let pathname = location.pathname === "/login" || location.pathname === "/register"
 
     const {user} = useContext(AuthContext)
 
@@ -32,6 +39,7 @@ const Header = () => {
     const [openDate, setOpenDate] = useState<boolean>(false);
     const [openBurger, setOpenBurger] = useState<boolean>(false)
     const [destination, setDestination] = useState<string>("")
+    const [activeIndex, setActiveIndex] = useState<string>(helps[0].text)
 
 
     const [options, setOptions] = useState<any>({
@@ -69,7 +77,6 @@ const Header = () => {
     const lockScroll = () => {
         document.body.style.overflow = 'hidden'
     }
-
     const unlockScroll = () => {
         document.body.style.overflow = ''
     }
@@ -92,8 +99,11 @@ const Header = () => {
         navigate(`/hotels?city=${destination}`);
     };
 
+
+
+
     return (
-        <header ref={categoriesRef} className={clsx(s.root, !path && s.homePath)}>
+        <header ref={categoriesRef} className={clsx(s.root, !path && s.homePath, pathname && s.pageSignUp)}>
             <section className={clsx(openBurger ? s.openMenu : s.closeMenu)}>
                 <ResponsiveSearch
                     options={options}
@@ -108,13 +118,13 @@ const Header = () => {
                     setDestination={setDestination}
                 />
             </section>
-            <section className={clsx("container", s.head, path && (isFixed && s.fix))}>
+            <section className={clsx("container", s.head, path && (isFixed && s.fix), pathname && s.pageSignUp)}>
                 <div className={s.burger}>
                     <div className={clsx(openBurger && s.openBurgerMenu)} onClick={() => setOpenBurger(!openBurger)}>
                         <GiHamburgerMenu/>
                     </div>
                 </div>
-                <p onClick={() => navigate("/")}>LOGO</p>
+                <p className={s.logo} onClick={() => navigate("/")}>LOGO</p>
                 <nav>
                     <ul>
                         {!user ? (
@@ -145,11 +155,19 @@ const Header = () => {
                 </nav>
             </section>
             <div className={clsx("container", s.icons, !path && s.propertyPath)}>
-                <PropertyNav active={true} Icon={FaBed} text={"text"}/>
-                <PropertyNav Icon={IoIosAirplane} text={"text"}/>
-                <PropertyNav Icon={AiFillCar} text={"text"}/>
-                <PropertyNav Icon={MdAttractions} text={"text"}/>
-                <PropertyNav Icon={RiTaxiWifiFill} text={"text"}/>
+                {pathname ? null : (
+                    <>
+                        {helps?.map(ele => (
+                            <PropertyNav
+                                key={ele.id}
+                                activeIndex={setActiveIndex}
+                                active={activeIndex === ele.text && true}
+                                Icon={ele.Icon}
+                                text={ele.text}
+                            />
+                        ))}
+                    </>
+                )}
             </div>
             {path ? (
                 <>

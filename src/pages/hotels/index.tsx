@@ -10,12 +10,12 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import {FaCalendarAlt} from "react-icons/fa";
 import {format} from "date-fns";
-import {useSearchParams, createSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 
 
 
 const Hotels = () => {
-    const {options, dates: ctxDate, destination} = useContext(SearchContext)
+    const {dates: ctxDate} = useContext(SearchContext)
     const [openDate, setOpenDate] = useState<boolean>(false);
     let [searchParams, setSearchParams] = useSearchParams();
 

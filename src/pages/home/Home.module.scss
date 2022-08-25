@@ -1,11 +1,11 @@
+@import "src/styles/variables";
 @import "../../styles/breakpoints";
 
-
 .title {
-  font-size: 30px;
-  font-weight: 700;
-  color: #313131;
   margin: 40px 0;
+  font-size: $font-lg-30;
+  font-weight: 700;
+  color: $gray-700;
 
   @include breakpoint-down(medium) {
     text-align: center;

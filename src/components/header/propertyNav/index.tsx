@@ -7,14 +7,15 @@ interface Props {
     Icon: IconType
     text: string
     active?: boolean
+    activeIndex: Function
 }
 
 
-const PropertyNav = ({text, Icon, active}: Props) => {
+const PropertyNav = ({text, Icon, active, activeIndex}: Props) => {
 
 
     return (
-        <div className={clsx(s.IconBox, active && s.active  )}>
+        <div onClick={() => activeIndex(text)} className={clsx(s.IconBox, active && s.active  )}>
             <span>
                 {<Icon/>}
             </span>

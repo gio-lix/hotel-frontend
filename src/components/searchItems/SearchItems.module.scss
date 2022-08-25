@@ -5,9 +5,9 @@
 .root {
   display: flex;
   width: 100%;
-  min-height: 230px;
-  border: 1px solid $grayishMiddleBlue;
   padding: 10px;
+  min-height: 230px;
+  border: 1px solid $grayish-400;
 
   @include breakpoint-down(medium) {
     flex-direction: column !important;
@@ -20,9 +20,9 @@
 }
 
 .imageBox {
-  min-height: 100%;
   width: 200px;
-  background-color: #ffa600;
+  min-height: 100%;
+  background-color: $yellow-400;
 
   @include breakpoint-down(medium) {
     width: 90%;
@@ -50,32 +50,32 @@
 
     > h5:last-child {
       font-weight: 500;
-      color: $limeGreenMedium;
+      color: $lime-green-500;
     }
   }
 
   &_name {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: $font-lg-20;
     letter-spacing: 1px;
-    color: #074e98;
+    font-weight: 700;
     margin-bottom: 10px;
+    color: $blue-mix-600;
   }
 
   &_address {
-    font-size: 16px;
+    font-size: $font-md-16;
     margin-bottom: 10px;
   }
 
   &_button {
-    font-size: $font-sm;
     padding: 3px 10px;
-    color: white;
-    background-color: $limeGreenMedium;
-    opacity: 0.7;
-    border: none;
-    cursor: pointer;
     margin-bottom: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: $font-sm;
+    background-color: $lime-green-500;
+    color: $white;
+    border: none;
 
     &:hover {
       opacity: 1;
@@ -83,7 +83,7 @@
   }
 
   &_additional_info {
-    color: black;
+    color: $black;
     font-weight: 600;
     margin-bottom: 20px;
   }
@@ -93,7 +93,7 @@
   }
 
   &_cancel {
-    color: $GreenMedDark;
+    color: $lime-green-600;
     font-weight: 700;
     margin-bottom: 10px;
   }
@@ -106,27 +106,27 @@
     align-items: flex-end;
 
     > p {
-      font-size: $font-mdlg;
-      color: $grayishDarkBlue;
-      font-weight: 500;
       margin-bottom: 10px;
+      font-size: $font-lg-32;
+      font-weight: 500;
+      color: $grayish-600;
     }
 
     > h5 {
       font-size: $font-sm;
-      color: $grayishMiddleBlue;
       margin-bottom: 15px;
+      color: $grayish-600;
     }
 
     > button {
       padding: 6px 10px;
-      font-size: $font-med;
-      color: white;
+      font-size: $font-md-18;
       font-weight: 400;
-      background-color: #074e98;
-      border: none;
-      cursor: pointer;
       opacity: 0.7;
+      cursor: pointer;
+      background-color: $blue-mix-600;
+      color: $white;
+      border: none;
 
       &:hover {
         opacity: 1;

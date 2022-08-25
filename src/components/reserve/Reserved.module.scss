@@ -4,28 +4,28 @@
   position: absolute;
   top: 60px;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
   width: 600px;
   height: 500px;
   padding: 10px;
+  transform: translateX(-50%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+  background-color: $white;
 
 
   .buttonClose {
     display: block;
+    margin-left: auto;
+    font-size: $font-lg-20;
+    cursor: pointer;
     border: none;
     background: none;
-    margin-left: auto;
-    font-size: 20px;
-    cursor: pointer;
   }
 
   > h1 {
-    font-size: 30px;
+    font-size: $font-lg-30;
     font-weight: 500;
-    color: #363636;
     margin-bottom: 20px;
+    color: $gray-700;
   }
 }
 
@@ -38,18 +38,19 @@
 
 
   &_left {
-    width: 70%;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: 70%;
+    height: 100%;
 
     > p:nth-child(3) {
       font-weight: 500;
     }
 
     > h3 {
-      font-size: $font-lg;
+      font-size: $font-lg-20;
       font-weight: 500;
     }
   }
@@ -68,7 +69,7 @@
       margin-left: 5px;
 
       > label {
-        color: #6e6e6e;
+        color: $grayish-450;
       }
 
       > input {
@@ -85,16 +86,16 @@
 
 
 .button {
-  background-color: #65a405;
   width: 100%;
   padding: 10px 0;
-  border: none;
-  font-size: 16px;
+  font-size: $font-md-16;
   font-weight: 600;
   letter-spacing: 3px;
-  color: white;
   opacity: 0.7;
   cursor: pointer;
+  color: $white;
+  background-color: $green-mix-400;
+  border: none;
 
   &:hover {
     opacity: 1;

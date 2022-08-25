@@ -80,7 +80,7 @@ const Reserved: FC<Props> = ({ setOpen,hotelId}) => {
                                     <p>{room.price}</p>
                                 </div>
                                 <div className={s.cartBox_right}>
-                                    {room.roomNumber?.map((item: RoomNumberType, i:number) => {
+                                    {room.roomNumber?.map((item: RoomNumberType) => {
                                         return (
                                             <div key={item._id}>
                                                 <label>{item.number}</label>

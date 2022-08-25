@@ -1,3 +1,4 @@
+@import "src/styles/variables";
 @import "src/styles/breakpoints";
 @import "src/styles/mixin";
 
@@ -13,7 +14,7 @@
     padding: 7px;
 
     &:hover {
-      box-shadow: 10px 5px 15px #a6a5a5;
+      box-shadow: 10px 5px 15px $gray-350;
     }
 
     @include transition(box-shadow);
@@ -27,18 +28,18 @@
     }
 
     > span:nth-child(2) {
+      font-size: $font-lg-20;
       font-weight: 700;
-      font-size: 20px;
       letter-spacing: 1px;
-      color: #313131;
+      color: $grayish-600;
     }
 
     > span:nth-child(3) {
       display: block;
-      font-size: 18px;
-      font-weight: 600;
       margin: 6px 0;
-      color: #323e42;
+      font-size: $font-md-18;
+      font-weight: 600;
+      color: $gray-mix-blue-800;
     }
 
     > span:nth-child(4) {
@@ -46,7 +47,7 @@
       font-size: 17px;
       font-weight: 500;
       margin: 6px 0;
-      color: #000000;
+      color: $black;
     }
   }
 

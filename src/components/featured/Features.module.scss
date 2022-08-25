@@ -1,3 +1,4 @@
+@import "src/styles/variables";
 @import "src/styles/mixin";
 @import "src/styles/breakpoints";
 
@@ -50,12 +51,12 @@
       bottom: -32px;
 
       left: 15px;
-      color: white;
-      font-size: 40px;
+      font-size: $font-lg-40;
       font-weight: 500;
+      color: $white;
       @include breakpoint-down(medium) {
         bottom: 40px;
-        font-size: 35px;
+        font-size: $font-lg-35;
         line-height: 50px;
       }
 
