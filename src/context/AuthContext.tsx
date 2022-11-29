@@ -4,7 +4,7 @@ import React, {createContext, Dispatch, useEffect, useReducer} from "react";
 
 const initialState = {
     loading: false,
-    user: JSON.parse(localStorage.getItem("user") as any) || null,
+    user: JSON.parse(localStorage.getItem("user") as string) || null,
     error: ""
 }
 

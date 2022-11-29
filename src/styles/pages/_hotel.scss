@@ -1,0 +1,210 @@
+@import "src/styles/variables";
+@import "src/styles/breakpoints";
+
+.hotel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint-down("medium") {
+    margin: 0 10px;
+  }
+}
+
+.hotel-title-box {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 20px 0;
+
+  > h1 {
+    margin-bottom: 10px;
+    font-size: $font-lg-32;
+    font-weight: 600;
+  }
+
+  &_location {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    > address {
+      margin-left: 10px;
+    }
+  }
+
+  > h4 {
+    font-size: 20px;
+    color: $lime-green-500;
+  }
+
+  > button {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 5px 15px;
+    font-size: $font-lg-20;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    background-color: $blue-500;
+    color: $white;
+    border: none;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+
+}
+
+.hotel-box {
+  position: relative;
+
+  .hotel-active-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 12, 0.7);
+
+    .hotel-cansel {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 30px;
+      cursor: pointer;
+      color: $white;
+    }
+
+    > img {
+      width: 80%;
+      aspect-ratio: 6/4;
+    }
+
+    .hotel-image-button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      z-index: 20;
+
+      > button {
+        width: 10%;
+        padding: 10px 0;
+        font-size: $font-lg-30;
+        cursor: pointer;
+        color: $white;
+        border: none;
+        background: none;
+
+        &:hover {
+          border: 0.5px solid gray;
+        }
+      }
+    }
+  }
+
+  @include breakpoint-down(medium) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.hotel-grid {
+  @include breakpoint-down(medium) {
+    order: 2;
+  }
+
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+  grid-gap: 10px;
+
+
+  > div {
+    aspect-ratio: 4/3;
+    grid-column: span;
+    cursor: pointer;
+
+    > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+.hotel-data-length-box {
+
+  @include breakpoint-down(medium) {
+    order: 1;
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  width: 300px;
+  height: 100%;
+  margin-left: 10px;
+  padding: 5px;
+  background-color: $grayish-Blue-100;
+
+
+  > h3 {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    @include breakpoint-down(medium) {
+      text-align: center;
+    }
+  }
+
+  > h5 {
+    margin-bottom: 25px;
+    @include breakpoint-down(medium) {
+      text-align: center;
+    }
+  }
+
+  > div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    @include breakpoint-down(medium) {
+      justify-content: center;
+    }
+
+    > p {
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    > span {
+      margin-left: 5px;
+    }
+  }
+
+  > button {
+    padding: 7px 15px;
+    font-size: 18px;
+    background-color: $blue-mix-600;
+    color: $white;
+    border: none;
+
+    @include breakpoint-down(medium) {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px 0;
+    }
+  }
+
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
